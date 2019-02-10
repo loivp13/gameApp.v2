@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    .container
+        include ./navbars/navigation_signIn.pug
+        .row
+            .col-lg-9
+                include ./searchGames/searchGames.pug
+            .col-lg-3
+                include ./wishList/wishList.pug

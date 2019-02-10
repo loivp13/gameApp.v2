@@ -1,0 +1,133 @@
+extends layout
+
+block content
+    .container
+        nav.navbar.navbar-expand-lg.navbar-light.bg-white.justify-content-between.mb-3.rounded-bottom
+            a.navbar-brand.ml-5(href='/') 
+                span.navbar_brand_Game Game
+                span.navbar_brand_App.text-danger.font-weight-bolder.ml-4.mt-5 App
+            div
+                a(href="/users/login").navbar_link_login
+                button.btn.bg-white.nav_button_login Account
+                    span.pl-1
+                    i.fas.fa-user-circle
+                if login
+                    button.btn.bg-white.nav_button_logout
+                    a(href="/users/logout").text-g Log out
+                        span 
+                        i.fas.fa-sign-out-alt
+    //SIGN UP
+    if hasSignupErr
+        //fail to sign up
+        .signUp.bg-white.box.container.rounded#SignUp
+            .row.justify-content-center
+                h1.signUp_header.pt-4 Sign Up
+            form(action="/users/register", method='post' novalidate)
+                .form-group
+                    label(for="signUp_username").pb-1 Username
+                    input(type="text", name='username', placeholder='Enter a username').form-control
+                .form-group
+                    label(for="#signUp_password").pb-1 Password
+                    input(type="password", placeholder='Enter a password', name='password').form-control#signUp_password
+                .form-group
+                    label(for="signUp_email").pb-1 Email
+                    input(type="hidden", name='_csrf', value=csrfToken)
+                    input(type="email", placeholder='Enter an email', name='email').form-control#signUp_email
+                .row.justify-content-between.signUp_message
+                    .col-4
+                        button(type='submit').btn.btn-success  Sign Up!
+                    .col-8   
+                        .row 
+                            each error in signupErrors
+                                .col.message_error
+                                    .alert.alert-danger.text-align-center #{error}
+            hr.my-2
+            .row.justify-content-center.align-items-center.mt-2
+                p Already have an account?
+                .button_login.pl-3
+                    button.btn-success.btn.btn_login Login!
+    else
+        //first attempt to sign up
+        .signUp.bg-white.box.container.d-none.rounded#SignUp
+            .row.justify-content-center
+                h1.signUp_header.pt-4 Sign Up
+            form(action="/users/register", method='post' novalidate)
+                .form-group
+                    label(for="signUp_username").pb-1 Username
+                    input(type="text", placeholder='Enter a username',name='username').form-control#signUp_username
+                .form-group
+                    label(for="signUp_password").pb-1 Password
+                    input(type="password", placeholder='Enter a password',name='password').form-control#signUp_password
+                .form-group
+                    label(for="signUp_email").pb-1 Email
+                    input(type="hidden", name='_csrf', value=csrfToken)
+                    input(type="email", placeholder='Enter an email',name='email').form-control#signUp_email
+                button(type='submit').btn.btn-success  Sign Up!
+            hr.my-2
+            .row.justify-content-center.align-items-center.mt-2
+                p Already have an account?
+                .button_login.pl-3
+                    button.btn-success.btn.btn_login Login!
+    //LOGIN
+    if hasLoginErr
+        .login.bg-white.box.container.rounded#Login
+            .row.justify-content-center
+                h1.login.pt-4 Login
+            form(action="/users/login", method='post' novalidate)
+                .form-group
+                    label(for="login_username").pb-1 Username
+                    input(type="text", placeholder='Enter your username',name='username').form-control#login_username
+                .form-group
+                    label(for="signUp_password").pb-1 Password
+                    input(type="password", placeholder='Enter a password',name='password').form-control#login_password
+                    input(type="hidden", name='_csrf', value=csrfToken)
+                .row.justify-content-between.login_message
+                    .col-6
+                        button(type='submit').btn.btn-primary  Login
+                    .col-6   
+                        .row 
+                            each error in loginErrors
+                                .col.message_error
+                                    .alert.alert-danger #{error}
+            hr.my-2
+            .row.justify-content-center.align-items-center.mt-5
+                p Don't have an account?
+                .button_login.pl-3
+                    button.btn-primary.btn.btn_signUp Sign Up!
+    else
+        if hasSignupErr 
+            .login.bg-white.box.container.rounded.d-none#Login
+                .row.justify-content-center
+                    h1.login.pt-4 Login
+                form(action="/users/login", method='post' novalidate)
+                    .form-group
+                        label(for="login_username").pb-1 Username
+                        input(type="text", placeholder='Enter your username', name='username').form-control#login_username
+                    .form-group
+                        label(for="signUp_password").pb-1 Password
+                        input(type="password", placeholder='Enter a password', name='password').form-control#login_password
+                        input(type="hidden", name='_csrf', value=csrfToken)
+                    button(type='submit').btn.btn-primary Login
+                hr.my-2
+                .row.justify-content-center.align-items-center.mt-5
+                    p Don't have an account?
+                    .button_login.pl-3
+                        button.btn-primary.btn.btn_signUp Sign Up!
+        else 
+            .login.bg-white.box.container.rounded#Login
+                    .row.justify-content-center
+                        h1.login.pt-4 Login
+                    form(action="/users/login", method='post' novalidate)
+                        .form-group
+                            label(for="login_username").pb-1 Username
+                            input(type="text", placeholder='Enter your username', name='username').form-control#login_username
+                        .form-group
+                            label(for="signUp_password").pb-1 Password
+                            input(type="password", placeholder='Enter a password', name='password').form-control#login_password
+                            input(type="hidden", name='_csrf', value=csrfToken)
+                        button(type='submit').btn.btn-primary Login
+                    hr.my-2
+                    .row.justify-content-center.align-items-center.mt-5
+                        p Don't have an account?
+                        .button_login.pl-3
+                            button.btn-primary.btn.btn_signUp Sign Up!

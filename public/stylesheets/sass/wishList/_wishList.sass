@@ -1,0 +1,54 @@
+.wishList_col_container
+    position: relative
+    border: 5px $OffWhite solid
+    border-bottom-width: 4em
+    border-top-width: 1.5em
+    .alert-userError
+        position: absolute
+        top: -2.5em
+        background: none
+        border: none
+        color: $AlertText
+    //  SOCIAL ICONS
+    .wishList_socialIcons
+            position: absolute
+            .fab
+                font-size: 1.3em
+    .wishList_welcome_header
+        font-size: .95em
+    .wishList_cart_welcome
+        color: $BrightBlue
+        .wishList_header_username
+            color: $OffWhite
+    .wishList_cart_item
+        font-size: .9em
+        .wishList_cart_image
+            border-radius: 5em
+    .wishList_total
+        .wishList_total_form
+            position: relative
+            .form_button_removeAll
+                position: absolute
+                width: 100px
+                height: 2.5em
+                background-color: $OffWhite
+                border-radius: 5em
+                top: 2em
+                left: -44px
+            .form_button_removeAll:focus, .form_button_removeAll:active 
+                outline: $OffWhite !important
+                box-shadow: none
+            .form_button_buy
+                position: absolute
+                right: 11px
+                bottom: -39px
+                width: 100px
+                height: 2.5em
+                border-radius: 5em
+                top: 2em
+                background-color: $OffWhite
+            .form_button_buy:active, .form_button_buy:active 
+                outline: $OffWhite !important
+                box-shadow: none
+            .fa-money-bill-alt, .fa-minus-square
+                font-size: 1.5em

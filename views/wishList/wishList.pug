@@ -1,0 +1,64 @@
+.row
+    .col.wishList_col_container.mt-3.ml-1.rounded
+        
+        if hasMessage
+            .alert.alert-danger.alert-userError.font-weight-bolder #{userMessage}
+        if !username
+            h4.mt-2.ml-2.mb-2.wishList_welcome_header.text-white Welcome! Please log in or sign up.
+                span.pl-1
+                    i.fas.fa-level-up-alt
+            .row.wishList_socialIcons.mt-3.justify-content-center
+                .row.wishList_socialIcons_Header.text-black
+                    .col.mb-1 Keep Updated!
+                .row.wishList_socialIcons_items.pb-3
+                    a.wishList_socialcons_link
+                        .col-3.wishList_socialIcons_googlePlus
+                            i.fab.fa-google-plus-g
+                    a.wishList_socialcons_link
+                        .col-3.wishList_socialIcons_twitter
+                            i.fab.fa-twitter
+                    a.wishList_socialcons_link
+                        .col-3.wishList_socialIcons_github
+                            i.fab.fa-git
+                    a.wishList_socialcons_link
+                        .col-3.wishList_socialIcons_linkedIn
+                            i.fab.fa-linkedin
+        else
+            h4.ml-2.mt-2.row.wishList_cart_welcome.mb-2.text-center Welcome 
+                span.pl-1.wishList_header_username.font-weight-light.text-uppercase #{username}
+            .row.wishList_table_head.pb-3.ml-2.text-white
+                .col.wishList_table_item.pl-1.pr-1 Total Quantity
+                .col.wishList_table_item.pl-1.pr-1 Total Price
+                    
+            if cart
+                each item in cart.items
+                    .row.wishList_cart_item.align-items-center.text-white
+                        .col.wishList_cart_thumbnail.mb-1
+                            .row.align-items-center.ml-4.border-bottom.border-secondary.pb-2.mt-1
+                                div
+                                    img(src=item.thumbnail, alt="").wishList_cart_image
+                                div.pl-2
+                                    span.ml-1.wishList_cart_priceText #{item.totalQty}
+                        .col.wishList_cart_totalPrice
+                            .row.align-items-center.justify-content-end.mr-1
+                                .wishList_cart_totalPriceText $#{item.totalPrice} 
+                                form(action="/users/profile/delete", method='POST').ml-3
+                                    - let deleteValue = {basePrice:item.basePrice, guid: item.id }
+                                    input(type="hidden", name='_csrf', value=csrfToken)
+                                    button(type='submit', name='deleteGame', value=deleteValue).btn.btn-sm.btn-danger.rounded-circle
+                                        i.far.fa-trash-alt
+                hr.bg-white
+                .row.wishList_total.text-white.align-items-center.ml-4.mb-2
+                    form(action="/users/profile/removeAll", method='POST').wishList_total_form
+                        input(type="hidden", name='_csrf', value=csrfToken)
+                        button.btn.form_button_removeAll(type='submit')
+                            i.fas.fa-minus-square
+                    .wishList_total_text.text-warning Items:
+                    .col.wishList_total_quantity.font-weight-bold.text-warning  #{cart.totalQty} 
+                    .wishList_total_text.text-warning Total:                    
+                    .col.wishList_total_price.font-weight-bold.text-warning $#{cart.totalPrice}
+                    form(action="/users/profile/buy", method='POST').wishList_total_form
+                        input(type="hidden", name='_csrf', value=csrfToken)                    
+                        button.btn.form_button_buy(type='submit')
+                            i.fas.fa-money-bill-alt     
+                

@@ -1,0 +1,167 @@
+@import 'https://fonts.googleapis.com/css?family=Oswald';
+#input_button_search {
+  border: none;
+  transition: color 0.5s ease;
+  color: #edeff1;
+  font-size: 1.5em;
+  background-color: black; }
+
+#input_button_search:active, #input_button_search:focus, #input_button_search:hover {
+  outline: none !important;
+  box-shadow: one;
+  color: green !important;
+  cursor: pointer; }
+
+.card {
+  min-width: 15em;
+  border: 15px solid black;
+  border-top-left-radius: 10em;
+  border-top-right-radius: 10em; }
+  .card img.card-img-top {
+    height: 250px;
+    border: 1px #000000 solid; }
+  .card .card-body .card-text {
+    font-size: .9em; }
+  .card .card-footer .price {
+    font-size: .5em; }
+  .card .card-footer .row .card_footer_for {
+    font-size: .7em; }
+  .card .card-footer .row .card_footer_platform {
+    font-size: .8em; }
+  .card .card-footer .row form button {
+    position: relative;
+    border: none;
+    background: none;
+    bottom: 2px; }
+  .card .card-footer .row form button:hover {
+    cursor: pointer; }
+    .card .card-footer .row form button:hover .fa-heart {
+      color: #8a2831; }
+    .card .card-footer .row form button:hover .fa-heart {
+      font-size: 1.5em; }
+  .card .card-footer .row form button:active, .card .card-footer .row form button:focus {
+    outline: none !important;
+    box-shadow: none; }
+  .card .card-footer .card_footer_releaseDate {
+    font-size: .8em; }
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+html body {
+  line-height: 1;
+  font-family: 'Oswald', sans-serif;
+  background-color: black; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none; }
+
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+button:hover, button:active, button:focus {
+  outline: none !important;
+  box-shadow: none !important; }
+
+.wishList_col_container {
+  position: relative;
+  border: 5px #edeff1 solid;
+  border-bottom-width: 4em;
+  border-top-width: 1.5em; }
+  .wishList_col_container .alert-userError {
+    position: absolute;
+    top: -2.5em;
+    background: none;
+    border: none;
+    color: #e71a2d; }
+  .wishList_col_container .wishList_socialIcons {
+    position: absolute; }
+    .wishList_col_container .wishList_socialIcons .fab {
+      font-size: 1.3em; }
+  .wishList_col_container .wishList_welcome_header {
+    font-size: .95em; }
+  .wishList_col_container .wishList_cart_welcome {
+    color: #1778e2; }
+    .wishList_col_container .wishList_cart_welcome .wishList_header_username {
+      color: #edeff1; }
+  .wishList_col_container .wishList_cart_item {
+    font-size: .9em; }
+    .wishList_col_container .wishList_cart_item .wishList_cart_image {
+      border-radius: 5em; }
+  .wishList_col_container .wishList_total .wishList_total_form {
+    position: relative; }
+    .wishList_col_container .wishList_total .wishList_total_form .form_button_removeAll {
+      position: absolute;
+      width: 100px;
+      height: 2.5em;
+      background-color: #edeff1;
+      border-radius: 5em;
+      top: 2em;
+      left: -44px; }
+    .wishList_col_container .wishList_total .wishList_total_form .form_button_removeAll:focus, .wishList_col_container .wishList_total .wishList_total_form .form_button_removeAll:active {
+      outline: #edeff1 !important;
+      box-shadow: none; }
+    .wishList_col_container .wishList_total .wishList_total_form .form_button_buy {
+      position: absolute;
+      right: 11px;
+      bottom: -39px;
+      width: 100px;
+      height: 2.5em;
+      border-radius: 5em;
+      top: 2em;
+      background-color: #edeff1; }
+    .wishList_col_container .wishList_total .wishList_total_form .form_button_buy:active, .wishList_col_container .wishList_total .wishList_total_form .form_button_buy:active {
+      outline: #edeff1 !important;
+      box-shadow: none; }
+    .wishList_col_container .wishList_total .wishList_total_form .fa-money-bill-alt, .wishList_col_container .wishList_total .wishList_total_form .fa-minus-square {
+      font-size: 1.5em; }
+
+.signUp.box {
+  margin-top: 3.5em;
+  width: 400px;
+  height: 400px; }
+
+.signUp_message .message_error .alert.alert-danger {
+  max-width: 8em;
+  font-size: .9em;
+  padding: 0em !important;
+  bottom: 1em !important; }
+
+.login.box {
+  margin-top: 3.5em;
+  width: 400px;
+  height: 350px; }
+
+.navbar .navbar-brand {
+  border-radius: 5em; }
+  .navbar .navbar-brand .navbar_brand_Game {
+    margin-left: -12px;
+    font-style: oblique;
+    position: absolute; }
+  .navbar .navbar-brand .navbar_brand_App {
+    font-style: oblique;
+    font-size: 1.5em;
+    font-weight: 500; }
+
+/*# sourceMappingURL=style.css.map */

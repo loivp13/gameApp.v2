@@ -1,0 +1,45 @@
+- let searchAsLogin = '/users/profile';
+- let searchAsNotLogin = '/searchGame';
+if login
+    form(action=searchAsLogin, method='GET')
+        - console.log(searchAsLogin)
+        .input-group.mb-3
+            input#input_form_value.form-control(type='text', placeholder='Search for games', name='name')
+            .input-group-append
+                button#input_button_search(type='submit') Search
+            .invalid-feedback field is empty
+else 
+    form(action=searchAsNotLogin, method='GET')
+        - console.log(searchAsNotLogin)
+        .input-group.mb-3
+            input#input_form_value.form-control(type='text', placeholder='Search for games', name='name')
+            .input-group-append
+                button#input_button_search.btn.btn-outline-danger(type='submit') Search
+            .invalid-feedback field is empty
+
+.row
+    each gameObj in searchedDataArray
+        .col.card.shadow-lg.mb-3.border-none.justify-content-center.border-bottom
+            img.card-img-top.mt-3.rounded.border-dark.shadow-md(src=gameObj.small_image, alt='...')
+            .card-body.border-dark
+                a(href=gameObj.more_detail)
+                    h6.card-title.text-dark #{gameObj.title}
+                .card-text  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi eum praesentium adipisci est...
+            .card-footer
+                .row
+                    .col-8
+                        p.card_footer_releaseDate.mb-2 Released On:
+                        p #{gameObj.release_date.split('').slice(0,11).join('')}
+                        hr
+                        div.d-flex.mr-3.mt-3.mb-2
+                            p.card-subtitle.card_footer_for.mr-1 For:
+                            each platformObj, index in gameObj.platforms
+                                - let stringIndex = index.toString();
+                                p.pb-2.mr-1.card-subtitle.card_footer_platform=platformObj[stringIndex]
+                    .col-1.card_footer_price.d-flex.pr-1.justify-content-start $#{gameObj.price}
+                    - let heartAction = `/users/profile/${username}` 
+                    form.col-2.card_footer_form(action=heartAction, method='post')
+                        - let addToList = {image:gameObj.icon_image, price:gameObj.price, title:gameObj.title,guid:gameObj.guid}
+                        input(type="hidden", name='_csrf', value=csrfToken)
+                        button.form_button_addGame.pb-1(name='addGame', type='submit', value=(addToList))
+                            i.fas.fa-heart.text-danger              

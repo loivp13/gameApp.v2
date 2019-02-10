@@ -1,0 +1,14 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-white.justify-content-between.mb-3.rounded-bottom
+  a.navbar-brand.ml-5(href='/') 
+    span.navbar_brand_Game Game
+    span.navbar_brand_App.text-danger.font-weight-bolder.ml-4.mt-5 App
+  div
+    a(href="/users/login").navbar_link_login
+      button.btn.bg-white.nav_button_login Account
+        span.pl-1
+          i.fas.fa-user-circle
+      if login
+        button.btn.bg-white.nav_button_logout
+          a(href="/users/logout").text-g Log out
+            span 
+              i.fas.fa-sign-out-alt
