@@ -13,9 +13,9 @@ const usersRouter = require("./routes/users");
 const searchRouter = require("./routes/searchFunction");
 const passport = require("passport");
 const flash = require("connect-flash");
-console.log("starting");
-const app = express();
+const methodOverride = require("method-override");
 
+const app = express();
 //connect to mongodb
 const mongoDB =
   "mongodb://masterveloute:Heyheyhey3@ds023684.mlab.com:23684/game_app";
@@ -23,7 +23,7 @@ mongoose.connect(mongoDB);
 
 //use Passport config
 require("./config/passport");
-
+app.use(methodOverride("_method"));
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
@@ -98,7 +98,7 @@ const csrf = require("csurf");
 const csrfProtection = csrf();
 app.use(csrfProtection);
 
-//Adding variables for app.locals 
+//Adding variables for app.locals
 app.use("/", function(req, res, next) {
   res.locals.login = req.isAuthenticated();
   res.locals.cart = req.session.cart;

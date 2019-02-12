@@ -44,7 +44,11 @@ router.post("/profile/delete", isLogin, function(req, res, next) {
   res.redirect("/users/profile");
 });
 
-router.post("/profile/removeAll", function(req, res, next) {});
+//User wishes to delete all
+router.delete("/profile/removeAll", function(req, res, next) {
+  delete req.session.cart;
+  res.redirect("/users/profile");
+});
 
 //User adding to wish list
 router.post("/profile/:username", isLogin, function(req, res, next) {
@@ -54,7 +58,6 @@ router.post("/profile/:username", isLogin, function(req, res, next) {
   );
   cart.add(JSON.parse(req.body.addGame));
   req.session.cart = cart;
-  console.log(cart.items);
   req.flash("success", "Added Item");
   res.redirect("/users/profile");
 });

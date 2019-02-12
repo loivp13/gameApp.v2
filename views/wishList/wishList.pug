@@ -49,7 +49,7 @@
                                         i.far.fa-trash-alt
                 hr.bg-white
                 .row.wishList_total.text-white.align-items-center.ml-4.mb-2
-                    form(action="/users/profile/removeAll", method='POST').wishList_total_form
+                    form(action="/users/profile/removeAll?_method=DELETE", method='POST').wishList_total_form
                         input(type="hidden", name='_csrf', value=csrfToken)
                         button.btn.form_button_removeAll(type='submit')
                             i.fas.fa-minus-square
