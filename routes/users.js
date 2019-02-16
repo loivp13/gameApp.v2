@@ -34,7 +34,7 @@ router.get("/profile", isLogin, async function(req, res, next) {
   }
 });
 
-//User deletes from wish list
+//User delete 1 item from wish list
 router.post("/profile/delete", isLogin, function(req, res, next) {
   let deleteGameObj = JSON.parse(req.body.deleteGame);
   let cart = new Cart(req.session.cart);
@@ -44,7 +44,7 @@ router.post("/profile/delete", isLogin, function(req, res, next) {
   res.redirect("/users/profile");
 });
 
-//User wishes to delete all
+//User delete all
 router.delete("/profile/removeAll", function(req, res, next) {
   delete req.session.cart;
   res.redirect("/users/profile");
@@ -61,7 +61,6 @@ router.post("/profile/:username", isLogin, function(req, res, next) {
   req.flash("success", "Added Item");
   res.redirect("/users/profile");
 });
-
 //user logging out
 router.get("/logout", function(req, res, next) {
   req.logout();

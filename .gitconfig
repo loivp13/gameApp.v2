@@ -1,0 +1,2 @@
+[alias]
+    admit = "git add . && git commit"

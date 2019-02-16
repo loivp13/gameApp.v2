@@ -1,5 +1,8 @@
 "use strict";
-(function($) {})($);
+//enable autocomplete
+let gamesAutocomplete = [,](function($) {
+  let game;
+})($);
 
 //toggle Login/SignUp
 (function($) {
@@ -24,5 +27,5 @@
 
 //toggle tooltip
 (function($) {
-  $("[data-toogle=tooltip]").tooltip();
+  $("[data-toggle=popover]").popover();
 })($);

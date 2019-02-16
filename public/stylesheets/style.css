@@ -19,9 +19,19 @@
   border-top-right-radius: 10em; }
   .card img.card-img-top {
     height: 250px;
-    border: 1px #000000 solid; }
-  .card .card-body .card-text {
-    font-size: .9em; }
+    border: 1px #000000 solid;
+    border-top-left-radius: 10em !important;
+    border-top-right-radius: 10em !important;
+    box-shadow: 12px 10px 5px -3px rgba(0, 0, 0, 0.82); }
+  .card .card-body {
+    border: 1px solid black;
+    border-bottom: none;
+    border-right: none;
+    padding: 1px !important; }
+    .card .card-body .card-title {
+      font-size: 1.2em; }
+    .card .card-body .card-text {
+      font-size: .9em; }
   .card .card-footer .price {
     font-size: .5em; }
   .card .card-footer .row .card_footer_for {
@@ -136,6 +146,11 @@ button:hover, button:active, button:focus {
       box-shadow: none; }
     .wishList_col_container .wishList_total .wishList_total_form .fa-money-bill-alt, .wishList_col_container .wishList_total .wishList_total_form .fa-minus-square {
       font-size: 1.5em; }
+  .wishList_col_container .wishList_socialIcons .wishList_socialIcons_items .text-primary {
+    font-size: 1em;
+    transition: all .2s ease-in-out; }
+  .wishList_col_container .wishList_socialIcons .wishList_socialIcons_items .text-primary:hover {
+    transform: scale(1.3); }
 
 .signUp.box {
   margin-top: 3.5em;

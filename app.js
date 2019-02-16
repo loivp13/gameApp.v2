@@ -11,9 +11,11 @@ const session = require("express-session");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const searchRouter = require("./routes/searchFunction");
+const checkoutRouter = require("./routes/checkout");
 const passport = require("passport");
 const flash = require("connect-flash");
 const methodOverride = require("method-override");
+const dataBase = require("./models/giantBombGamesDataBase");
 
 const app = express();
 //connect to mongodb
@@ -109,6 +111,9 @@ app.use("/", function(req, res, next) {
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/searchGame", searchRouter);
+app.use("/checkout", (req, res, err) => {
+  res.render("checkout");
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

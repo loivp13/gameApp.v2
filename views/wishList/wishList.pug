@@ -5,23 +5,23 @@
             .alert.alert-danger.alert-userError.font-weight-bolder #{userMessage}
         if !username
             h4.mt-2.ml-2.mb-2.wishList_welcome_header.text-white Welcome! Please log in or sign up.
-                span.pl-1
+                span.pl-1.d-flex.justify-content-center.pt-2
                     i.fas.fa-level-up-alt
             .row.wishList_socialIcons.mt-3.justify-content-center
                 .row.wishList_socialIcons_Header.text-black
                     .col.mb-1 Keep Updated!
                 .row.wishList_socialIcons_items.pb-3
-                    a.wishList_socialcons_link
-                        .col-3.wishList_socialIcons_googlePlus
+                    a(href="https://plus.google.com/u/0/115757859937195814229").wishList_socialcons_link
+                        .col-3.wishList_socialIcons_googlePlus.text-primary
                             i.fab.fa-google-plus-g
-                    a.wishList_socialcons_link
-                        .col-3.wishList_socialIcons_twitter
+                    a(href='https://twitter.com/').wishList_socialcons_link
+                        .col-3.wishList_socialIcons_twitter.text-primary
                             i.fab.fa-twitter
-                    a.wishList_socialcons_link
-                        .col-3.wishList_socialIcons_github
+                    a(href='https://github.com/loivp13').wishList_socialcons_link
+                        .col-3.wishList_socialIcons_github.text-primary
                             i.fab.fa-git
-                    a.wishList_socialcons_link
-                        .col-3.wishList_socialIcons_linkedIn
+                    a(href='https://www.linkedin.com/in/loi-pham-aa33b577/').wishList_socialcons_link
+                        .col-3.wishList_socialIcons_linkedIn.text-primary
                             i.fab.fa-linkedin
         else
             h4.ml-2.mt-2.row.wishList_cart_welcome.mb-2.text-center Welcome 
@@ -57,8 +57,8 @@
                     .col.wishList_total_quantity.font-weight-bold.text-warning  #{cart.totalQty} 
                     .wishList_total_text.text-warning Total:                    
                     .col.wishList_total_price.font-weight-bold.text-warning $#{cart.totalPrice}
-                    form(action="/users/profile/buy", method='POST').wishList_total_form
+                    form(action="/checkout", method='POST').wishList_total_form
                         input(type="hidden", name='_csrf', value=csrfToken)                    
                         button.btn.form_button_buy(type='submit')
-                            i.fas.fa-money-bill-alt     
+                            i.fas.fa-money-bill-alt
                 

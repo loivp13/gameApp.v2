@@ -1,0 +1,72 @@
+- let searchAsLogin = '/users/profile';
+- let searchAsNotLogin = '/searchGame';
+// ========================
+// ========isLogin=====
+// ========================
+if login
+    form(action=searchAsLogin, method='GET')
+        - console.log(searchAsLogin)
+        .input-group.mb-3
+            input#input_form_value.form-control(type='text', placeholder='Search for games', name='name')
+            .input-group-append
+                button#input_button_search(type='submit') Search
+            .invalid-feedback field is empty
+else 
+    form(action=searchAsNotLogin, method='GET')
+        - console.log(searchAsNotLogin)
+        .input-group.mb-3
+            input#input_form_value.form-control(type='text', placeholder='Search for games', name='name')
+            .input-group-append
+                button#input_button_search.btn.btn-outline-danger(type='submit') Search
+            .invalid-feedback field is empty
+
+// ========================
+// ========CARD=====
+// ========================
+.row
+    each gameObj in chunkedArray
+        .col.card.shadow-lg.mb-3.border-none.justify-content-center.border-bottom
+            a(href=gameObj.site_detail_url)
+                img.card-img-top.mt-3.rounded.border-dark.shadow-md(src=gameObj.image.small_url, alt='...')
+            .card-body.border-dark.mt-2
+                h6.card-title.text-dark.pl-2 #{gameObj.name}
+                if gameObj.deck.length > 70
+                    .card-text.pl-1.pb-1=gameObj.deck.slice(0,70) + '...'
+                else 
+                    .card-text=gameObj.deck
+            .card-footer
+                .row
+                    .col-8
+                        p.card_footer_releaseDate.mb-2 Released On:
+                        p #{gameObj.date_added.split('').slice(0,11).join('')}
+                        hr
+                        div.d-flex.mr-3.mt-3.mb-2
+                            p.card-subtitle.card_footer_for.mr-1 For:
+                            each platformObj in gameObj.platforms 
+                                p.pb-2.mr-1.card-subtitle.card_footer_platform=platformObj.abbreviation
+                    .col-1.card_footer_price.d-flex.pr-1.justify-content-start
+                    - let heartAction = `/users/profile/${username}` 
+                    form.col-2.card_footer_form(action=heartAction, method='post')
+                        - let addToList = {image:gameObj.icon_image, price:gameObj.price, title:gameObj.title,guid:gameObj.guid}
+                        input(type="hidden", name='_csrf', value=csrfToken)
+                        button.form_button_addGame.pb-1(name='addGame', type='submit', value=(addToList))
+                            i.fas.fa-heart.text-danger              
+nav(aria-label='Pages')
+    ul.pb-5.pagination.pagination-lg.justify-content-center
+        if tabs.tab1 === 1 
+            li.page-item.disabled
+                a.page-link( tabindex='-1') 
+                    i.fas.fa-backward
+        else    
+            li.page-item
+                a.page-link(href=`/pagination/1`, tabindex='-1')
+                    i.fas.fa-backward
+        li.page-item
+            a.page-link(href=`/pagination/${tabs.tab1}`)=tabs.tab1
+        li.page-item
+            a.page-link(href=`/pagination/${tabs.tab2}`)=tabs.tab2
+        li.page-item
+            a.page-link(href=`/pagination/${tabs.tab3}`)=tabs.tab3
+        li.page-item
+            a.page-link(href='/pagination/6') 
+                i.fas.fa-forward
