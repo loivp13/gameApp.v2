@@ -7,18 +7,30 @@ if login
     form(action=searchAsLogin, method='GET')
         .input-group.mb-3
             input#input_form_value.form-control(type='text', placeholder='Search for games', name='name')
-            .input-group-append
+            .input-group-append.align-content-center.mb-1
                 button#input_button_search(type='submit') Search
             .invalid-feedback field is empty
 else 
     form(action=searchAsNotLogin, method='GET')
-        - console.log(searchAsNotLogin)
         .input-group.mb-3
             input#input_form_value.form-control(type='text', placeholder='Search for games', name='name')
-            .input-group-append
+            .input-group-append.mb-1
                 button#input_button_search.btn.btn-outline-danger(type='submit') Search
             .invalid-feedback field is empty
-
+.row
+    .col-2
+        .input-group-append
+            select#filters.custom-select.custom-select-sm(name="filter")
+                option.selected Filtered By:
+                option 
+                    a(href="/")
+                option Name
+                option Release Date
+    .col-3    
+        .input-group-append  
+            select#sorted.custom-select.custom-select-sm(name="sorted")
+                option Descending
+                option Ascending
 // ========================
 // ========CARD=====
 // ========================

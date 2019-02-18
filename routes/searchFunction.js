@@ -8,8 +8,8 @@ router.get("/", async function(req, res, next) {
     let tab1 = 1,
       tab2 = 2,
       tab3 = 3;
-    let querySearch = req.query.name;
-    const searchedDataArray = await SearchFunction(querySearch);
+    let term = req.query.name;
+    const searchedDataArray = await SearchFunction(term);
     let chunkedArray = searchedDataArray.results[0].map(object => {
       if (!object.platforms) {
         object.platforms = [{ abbreviation: "TBA" }];
