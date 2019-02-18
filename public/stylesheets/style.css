@@ -14,6 +14,7 @@
 
 .card {
   min-width: 15em;
+  max-width: 15em;
   border: 15px solid black;
   border-top-left-radius: 10em;
   border-top-right-radius: 10em; }
@@ -29,15 +30,14 @@
     border-right: none;
     padding: 1px !important; }
     .card .card-body .card-title {
-      font-size: 1.2em; }
+      font-size: 1.2em;
+      justify-self: center; }
     .card .card-body .card-text {
-      font-size: .9em; }
-  .card .card-footer .price {
-    font-size: .5em; }
+      font-size: .7em; }
   .card .card-footer .row .card_footer_for {
     font-size: .7em; }
   .card .card-footer .row .card_footer_platform {
-    font-size: .8em; }
+    font-size: .7em; }
   .card .card-footer .row form button {
     position: relative;
     border: none;
@@ -118,6 +118,7 @@ button:hover, button:active, button:focus {
   .wishList_col_container .wishList_cart_item {
     font-size: .9em; }
     .wishList_col_container .wishList_cart_item .wishList_cart_image {
+      max-width: 2.5em;
       border-radius: 5em; }
   .wishList_col_container .wishList_total .wishList_total_form {
     position: relative; }

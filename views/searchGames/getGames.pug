@@ -27,7 +27,7 @@ else
     each gameObj in chunkedArray
         .col.card.shadow-lg.mb-3.border-none.justify-content-center.border-bottom
             a(href=gameObj.site_detail_url)
-                img.card-img-top.mt-3.rounded.border-dark.shadow-md(src=gameObj.image.small_url, alt='...')
+                img.card-img-top.mt-3.rounded.border-dark.shadow-md(src=gameObj.image.screen_url, alt='...')
             .card-body.border-dark.mt-2
                 h6.card-title.text-dark.pl-2 #{gameObj.name}
                 if gameObj.deck.length > 70
@@ -38,16 +38,17 @@ else
                 .row
                     .col-8
                         p.card_footer_releaseDate.mb-2 Released On:
-                        p #{gameObj.date_added.split('').slice(0,11).join('')}
+                        p #{gameObj.original_release_date.split('').slice(0,11).join('')}
                         hr
                         div.d-flex.mr-3.mt-3.mb-2
                             p.card-subtitle.card_footer_for.mr-1 For:
                             each platformObj in gameObj.platforms 
                                 p.pb-2.mr-1.card-subtitle.card_footer_platform=platformObj.abbreviation
                     .col-1.card_footer_price.d-flex.pr-1.justify-content-start
-                    - let heartAction = `/users/profile/${username}` 
+                        .price $#{gameObj.price} 
+                    - let heartAction = `/users/profile/`
                     form.col-2.card_footer_form(action=heartAction, method='post')
-                        - let addToList = {image:gameObj.icon_image, price:gameObj.price, title:gameObj.title,guid:gameObj.guid}
+                        - let addToList = {image:gameObj.image.icon_url, price:gameObj.price, title:gameObj.name,guid:gameObj.guid}
                         input(type="hidden", name='_csrf', value=csrfToken)
                         button.form_button_addGame.pb-1(name='addGame', type='submit', value=(addToList))
                             i.fas.fa-heart.text-danger              
@@ -67,6 +68,11 @@ nav(aria-label='Pages')
             a.page-link(href=`/pagination/${tabs.tab2}`)=tabs.tab2
         li.page-item
             a.page-link(href=`/pagination/${tabs.tab3}`)=tabs.tab3
-        li.page-item
-            a.page-link(href='/pagination/6') 
-                i.fas.fa-forward
+        if tabs.tab3 === 6
+            li.page-item.disabled
+                a.page-link(href='/pagination/6') 
+                    i.fas.fa-forward
+        else 
+            li.page-item
+                a.page-link(href='/pagination/6') 
+                    i.fas.fa-forward

@@ -17,6 +17,7 @@
 // ===============================
 .card
     min-width: 15em
+    max-width: 15em
     border: 15px solid black
     border-top-left-radius: 10em
     border-top-right-radius: 10em
@@ -33,16 +34,21 @@
         padding: 1px !important
         .card-title
             font-size: 1.2em  
+            justify-self: center
         .card-text
-            font-size: .9em
+            font-size: .7em
+    //FOOTER
     .card-footer
-        .price
-            font-size: .5em
         .row
+            //Pricing
+            .card_footer_price
+                .price
+                    1.3em
+
             .card_footer_for
                 font-size: .7em
             .card_footer_platform
-                font-size: .8em
+                font-size: .7em
             form
                 button
                     position: relative
