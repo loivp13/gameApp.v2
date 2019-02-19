@@ -38,7 +38,7 @@ else
     each gameObj in chunkedArray
         .col.card.shadow-lg.mb-3.border-none.justify-content-center.border-bottom
             a(href=gameObj.site_detail_url)
-                img.card-img-top.mt-3.rounded.border-dark.shadow-md(src=gameObj.image.screen_url, alt='...')
+                img.card-img-top.mt-3.rounded.border-dark.shadow-md(src=gameObj.image.small_url, alt='...')
             .card-body.border-dark.mt-2
                 h6.card-title.text-dark.pl-2 #{gameObj.name}
                 if gameObj.deck.length > 70

@@ -137,6 +137,7 @@ router.get("/profile/:page", isLogin, async function(req, res, next) {
 //User delete 1 item from wish list
 router.post("/profile/delete", isLogin, function(req, res, next) {
   let deleteGameObj = JSON.parse(req.body.deleteGame);
+  console.log(deleteGameObj);
   let cart = new Cart(req.session.cart);
   cart.delete(deleteGameObj);
   req.flash("success", "Deleted item");

@@ -30,7 +30,7 @@ module.exports = function Cart({ items = {}, totalQty = 0, totalPrice = 0 }) {
     }
   };
 
-  this.delete = function({ guid, basePrice }) {
+  this.delete = function({ basePrice, guid }) {
     let item = this.items[guid];
     console.log(item);
     console.log(basePrice);
@@ -39,10 +39,14 @@ module.exports = function Cart({ items = {}, totalQty = 0, totalPrice = 0 }) {
       console.log(item.totalQty);
       item.totalQty -= 1;
       item.totalPrice -= basePrice;
+      this.totalQty -= 1;
+      this.totalPrice -= basePrice;
     } else {
       item.totalPrice = 0;
       item.totalQty = 0;
       delete this.items[guid];
+      this.totalQty -= 1;
+      this.totalPrice -= basePrice;
     }
   };
 };
